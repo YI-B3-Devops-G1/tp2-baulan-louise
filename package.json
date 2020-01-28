@@ -1,0 +1,16 @@
+{
+  "name": "docker_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Louise BAULAN",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.17.0",
+    "redis": "^2.8.0"
+  }
+}

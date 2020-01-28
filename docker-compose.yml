@@ -1,0 +1,45 @@
+version: '3.1'
+services:
+  nginx:
+    build:
+      context: "./nginx"
+      dockerfile: "Dockerfile"
+    environment:
+      - "HOSTNAME=api:8001"
+    depends_on:
+      - "api"
+    networks:
+      - "sub_network_nodejs"
+    ports:
+      - "8001:80"
+  redis:
+    image: "redis:alpine"
+    container_name: docker_pipeline
+    networks:
+      - sub_network_db
+  postgres:
+    image: "postgres"
+    container_name: "postgres"
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "jaimelespates"
+      POSTGRES_DB: "db"
+      PGDATA: "/data/postgres"
+    depends_on:
+      - "redis"
+    networks:
+      - "sub_network_db"
+  api:
+    build:
+      context: "../"
+      dockerfile: "node/Dockerfile"
+    container_name: "nodejs"
+    environment:
+      - "NODE_ENV=production"
+    networks:
+      - "sub_network_db"
+      - "sub_network_nodejs"
+
+networks:
+  sub_network_db:
+  sub_network_nodejs:
