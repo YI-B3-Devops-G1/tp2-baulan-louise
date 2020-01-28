@@ -7,11 +7,21 @@ services:
     environment:
       - "HOSTNAME=api:8001"
     depends_on:
-      - "api"
+      - "node"
     networks:
       - "sub_network_nodejs"
     ports:
-      - "8001:80"
+      - "3000:3000"
+  node:
+    build:
+      context: "./node"
+      dockerfile: "Dockerfile"
+    container_name: "nodejs"
+    environment:
+      - "NODE_ENV=production"
+    networks:
+      - "sub_network_db"
+      - "sub_network_nodejs"
   redis:
     image: "redis:alpine"
     container_name: docker_pipeline
@@ -29,16 +39,6 @@ services:
       - "redis"
     networks:
       - "sub_network_db"
-  api:
-    build:
-      context: "../"
-      dockerfile: "node/Dockerfile"
-    container_name: "nodejs"
-    environment:
-      - "NODE_ENV=production"
-    networks:
-      - "sub_network_db"
-      - "sub_network_nodejs"
 
 networks:
   sub_network_db:
