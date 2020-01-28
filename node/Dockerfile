@@ -7,6 +7,6 @@ RUN chown -R node:node /home/nodejs/app
 COPY package*.json
 RUN npm install
 
-EXPOSE 8001
+EXPOSE 3000
 
 CMD ['npm', 'start']
