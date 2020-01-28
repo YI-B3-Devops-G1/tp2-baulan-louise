@@ -1,10 +1,14 @@
 {
   "name": "docker_test",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "This is a test on docker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YI-B3-Devops-G1/tp2-baulan-louise.git"
+  },
+  "main": "main.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node main.js"
   },
   "author": "Louise BAULAN",
   "license": "ISC",
