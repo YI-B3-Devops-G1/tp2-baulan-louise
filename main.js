@@ -17,7 +17,11 @@ app.get('/', (req, res) => {
 
 });
 app.get('/status', (req, res) => {
-  res.send( { "message": "STATUS" });
+  {
+    "status": "OK",
+  "postgresUptime": String,
+  "redisConnectedClients": Number
+  }
 });
 
 // Connection to db
