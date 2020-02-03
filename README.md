@@ -7,5 +7,4 @@ github_username: Fayaah
 
 ### Lancer le projet 
 
-`$ sudo docker-compose build`
 `$ sudo docker-compose up`
